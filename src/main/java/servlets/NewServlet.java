@@ -11,17 +11,17 @@ public class NewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("GET request in terminal");
-        response.setContentType("text/plain");
-        response.getWriter().println("Here is a line of text");
-        response.getWriter().println("And here another one");
+        response.setContentType("text/html");
+        response.getWriter().println("<p>Here is a line of text</p>");
+        response.getWriter().println("<p>And here another one</p>");
 
         PrintWriter out = response.getWriter();
         String parameter1 = request.getParameter("parameter1");
         String parameter2 = request.getParameter("parameter2");
         String parameter3 = request.getParameter("parameter3");
 
-        out.println("To sa wczytane slowa: ");
         if ((parameter1 != null) || (parameter2 != null) || (parameter3 != null)) {
+            out.println("To sa wczytane slowa: ");
             out.println(parameter1);
             out.println(parameter2);
             out.println(parameter3);
