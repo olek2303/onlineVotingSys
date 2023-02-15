@@ -21,9 +21,11 @@ public class NewServlet extends HttpServlet {
         String parameter3 = request.getParameter("parameter3");
 
         out.println("To sa wczytane slowa: ");
-        out.println(parameter1);
-        out.println(parameter2);
-        out.println(parameter3);
+        if ((parameter1 != null) || (parameter2 != null) || (parameter3 != null)) {
+            out.println(parameter1);
+            out.println(parameter2);
+            out.println(parameter3);
+        }
     }
 
     @Override
