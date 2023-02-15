@@ -10,9 +10,9 @@
     <FORM ACTION="http://localhost:8080/login"
           METHOD="POST">
         Login:
-        <INPUT TYPE="email" NAME="login"><BR>
+        <INPUT TYPE="email" NAME="login" required><BR>
         Password:
-        <INPUT TYPE="password" NAME="password"><BR>
+        <INPUT TYPE="password" NAME="password" required><BR>
         <INPUT TYPE="SUBMIT" VALUE="Wyslij">
     </FORM>
 </body>
