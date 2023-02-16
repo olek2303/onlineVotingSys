@@ -15,6 +15,7 @@ public class Login extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //podaje email i haslo dalej do voting jsp
         getServletContext().getRequestDispatcher("/voting.jsp").forward(request, response);
     }
 }
