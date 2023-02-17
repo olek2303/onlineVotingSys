@@ -7,7 +7,7 @@ import java.sql.Statement;
 public class database {
     static final String DB_URL = "jdbc:mysql://localhost:3306/";
     static final String USER = "root";
-    static final String PASS = "";
+    static final String PASS = "root";
 
     public static void main(String[] args) {
         // Open a connection
@@ -15,6 +15,11 @@ public class database {
     }
     public static void create() {
         try {
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            }
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
             String sql = "CREATE DATABASE VOTING";
