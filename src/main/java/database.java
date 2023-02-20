@@ -1,18 +1,42 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+
 public class database {
-    static final String DB_URL = "jdbc:mysql://localhost:3306/VOTING";
+    static final String DB_URL = "jdbc:mysql://localhost:3306/voting";
     static final String USER = "root";
     static final String PASS = "root";
 
     public static void main(String[] args) {
         // Open a connection
         //create();
-        createTable();
+        //createTable();
+        registerUser("11@gmail.com", "hablahablahask123");
+    }
+    public static void registerUser(String mail, String password) {
+        try {
+            //Class.forName("com.mysql.cj.jdbc.Driver");
+            //sprawdzenie czy jest taki mail
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+            String sql = "select * from votes where mail = " + "'" + mail + "'";
+            System.out.println(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+            if(rs.next()) {
+                throw new SQLException("jest juz taki rekord");
+            }
+
+            String sql1 = "INSERT INTO Votes (mail, password) VALUES (?, ?)";
+            PreparedStatement ps = conn.prepareStatement(sql1);
+            ps.setString(1, mail);
+            ps.setString(2, password);
+            ps.executeUpdate();
+            System.out.println("User registered...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public static void giveVote(int id) {
+
     }
     public static void create() {
         try {
@@ -52,12 +76,5 @@ public class database {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void registerUser() {
-        
-    }
-    public static void giveVote(int id) {
-
     }
 }
