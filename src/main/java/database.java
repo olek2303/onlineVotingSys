@@ -11,6 +11,7 @@ public class database {
         //create();
         //createTable();
         registerUser("11@gmail.com", "hablahablahask123");
+        giveVote("11@gmail.com", 2);
     }
     public static void registerUser(String mail, String password) {
         try {
@@ -35,8 +36,16 @@ public class database {
             e.printStackTrace();
         }
     }
-    public static void giveVote(int id) {
-
+    public static void giveVote(String mail, int v) {
+        try {
+            Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            Statement stmt = conn.createStatement();
+            String sql = "UPDATE Votes " + "SET vote = 1 WHERE mail = " + "'" + mail + "'";
+            stmt.executeUpdate(sql);
+            System.out.println("Update made correctly");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
     public static void create() {
         try {
