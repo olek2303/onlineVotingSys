@@ -25,7 +25,7 @@ Project was made to dive into Java language and its' possibilities.
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/olek2303/onlineVotingSys.git
 ```
 
 Go to the project directory
