@@ -1,6 +1,5 @@
-
+package db;
 import java.sql.*;
-
 public class database {
     static final String DB_URL = "jdbc:mysql://localhost:3306/voting";
     static final String USER = "root";
@@ -15,7 +14,7 @@ public class database {
     }
     public static void registerUser(String mail, String password) {
         try {
-            //Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             //sprawdzenie czy jest taki mail
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -34,10 +33,13 @@ public class database {
             System.out.println("User registered...");
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public static void giveVote(String mail, int v) {
         try {
+            Class.forName("com.mysql.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
             String sql = "UPDATE Votes " + "SET vote = " + v + " WHERE mail = " + "'" + mail + "'";
@@ -45,6 +47,8 @@ public class database {
             System.out.println("Update made correctly");
         } catch (SQLException e) {
             e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
         }
     }
     public static void create() {
