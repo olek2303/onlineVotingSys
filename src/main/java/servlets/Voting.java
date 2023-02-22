@@ -11,14 +11,19 @@ import java.io.PrintWriter;
 public class Voting extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String checkBox = request.getParameter("check");
+        String mail = request.getParameter("mail");
+        String password = request.getParameter("password");
+        request.setAttribute("mail", mail);
+        request.setAttribute("password", password);
+        request.getRequestDispatcher("/result").forward(request, response);
+        //getServletContext().getRequestDispatcher("/result").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        String mail = request.getParameter("mail");
-        String password = request.getParameter("password");
-        System.out.println(mail + " " + password);
+        //getServletContext().getRequestDispatcher("/voting.jsp").forward(request, response);
+
+
     }
 }

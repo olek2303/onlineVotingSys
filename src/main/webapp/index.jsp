@@ -9,7 +9,7 @@
 <p>Welcome to the online voting system</p>
 <p>Click down below to login for the voting</p>
 <br/>
-<a href="login">LOGIN FOR THE VOTING</a>
+<a href="login.jsp">LOGIN FOR THE VOTING</a>
 <br/>
 <br/>
 <p>Below is check and learning stuff</p>

@@ -12,8 +12,7 @@ public class database {
         //registerUser("22@gmail.com", "hablahablahask123");
         //giveVote("22@gmail.com", 2);
     }
-    public static boolean registerUser(String mail, String password) {
-        boolean bol = false;
+    public static void registerUser(String mail, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //sprawdzenie czy jest taki mail
@@ -32,13 +31,11 @@ public class database {
             ps.setString(2, password);
             ps.executeUpdate();
             System.out.println("User registered...");
-            bol = true;
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        return bol;
     }
     public static void giveVote(String mail, int v) {
         try {

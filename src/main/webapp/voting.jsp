@@ -6,14 +6,14 @@
 <body>
     <h1>Welcome to the voting section</h1>
     <p>Do not come back, now give the vote :)</p>
-    <FORM ACTION="http://localhost:8080/voting"
+    <FORM ACTION="http://localhost:8080/result"
           METHOD="POST">
         First Vote Option:
-        <INPUT TYPE="checkbox" NAME="v1" ><BR>
+        <INPUT TYPE="checkbox" NAME="check" value="1"><BR>
         Second Vote Option:
-        <INPUT TYPE="checkbox" NAME="v2" ><BR>
+        <INPUT TYPE="checkbox" NAME="check" value="2"><BR>
         No Decision:
-        <INPUT TYPE="checkbox" NAME="v3" ><BR>
+        <INPUT TYPE="checkbox" NAME="check" value="3"><BR>
         <INPUT TYPE="SUBMIT" VALUE="Wyslij">
     </FORM>
 </body>
