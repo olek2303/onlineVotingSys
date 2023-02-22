@@ -9,12 +9,13 @@ public class database {
         // Open a connection
         //create();
         //createTable();
-        registerUser("22@gmail.com", "hablahablahask123");
-        giveVote("22@gmail.com", 2);
+        //registerUser("22@gmail.com", "hablahablahask123");
+        //giveVote("22@gmail.com", 2);
     }
-    public static void registerUser(String mail, String password) {
+    public static boolean registerUser(String mail, String password) {
+        boolean bol = false;
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             //sprawdzenie czy jest taki mail
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
@@ -31,15 +32,17 @@ public class database {
             ps.setString(2, password);
             ps.executeUpdate();
             System.out.println("User registered...");
+            bol = true;
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        return bol;
     }
     public static void giveVote(String mail, int v) {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
             Statement stmt = conn.createStatement();
             String sql = "UPDATE Votes " + "SET vote = " + v + " WHERE mail = " + "'" + mail + "'";
